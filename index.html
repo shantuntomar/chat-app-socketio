@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles/index.css">
+    <title>LetsTalk</title>
+</head>
+<body>
+    <main>
+        <header>
+            <div class="title">
+                <h1>LetsTalk</h1>
+            </div>
+            <button type="button" onclick="showHide()">
+                <img src="icons/download.jpg" alt="hamburger" style="width: 35px; height: 35px; border-radius: 50px; cursor: pointer;">
+            </button>
+        </header>
+        <div class="container">
+            <div class="users-window" id="target">
+                <div class="users-head">
+                    <h3>People</h3>
+                    <h4 class="user-count">3</h4>
+                </div>
+                <div class="users-list">
+                </div>
+            </div>
+            <div class="chat-window">
+                <div class="chats">
+                    <!-- <div class="user-join">
+                        <p><b>Jarvis</b> Joined the Chat </p>
+                    </div> -->
+                    <!-- <div class="message incoming">
+                        <h4>Jarvis</h4>
+                        <p>Hello Ultron </p>
+                    </div>
+                    <div class="message outgoing">
+                        <h4>moko</h4>
+                        <p>Hello Jarvis </p>
+                    </div> -->
+                </div>
+                <div class="user-input">
+                    <input id="user-msg" type="text" placeholder="Enter Message ">
+                    <button type="button" id="msg-send">SEND</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+
+        var tgt = document.getElementById('target');
+        function showHide() {
+            if(tgt.style.display == "block") {
+                tgt.style.display = "none"
+            }
+            else {
+                tgt.style.display = "block";
+            }
+        }
+
+
+    </script>
+
+    <!-- its a method to use client api  -->
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script src="/js/client.js"></script>
+
+
+
+
+</body>
+</html>

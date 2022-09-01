@@ -1,0 +1,190 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    ::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+// mixing in scss
+@mixin flexing( $fd , $ai , $jc) {
+    display: flex;
+    flex-direction: $fd;
+    align-items: $ai;
+    justify-content: $jc;
+    
+}
+
+main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+    width: 80%;
+    overflow: hidden;
+    border-radius: 10px;
+
+    // nesting in scss 
+    header {
+        //border: 2px solid red ;
+        background-color: rgb(255, 153, 0);
+        color: white;
+        padding: 7px 20px;
+        @include flexing(row,center ,space-between);
+        div.title {
+            @include flexing(row,center ,flex-start);
+            h1 {
+                font-size: 32px;
+                margin-left: 10px;
+            }
+        }
+        button {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            display: none;
+        }
+    }
+
+    div.container {
+        background-color: rgb(245, 244, 244);
+        padding: 20px;
+        @include flexing(row, stretch ,flex-start );
+
+        
+        div.users-window {
+            width: 350px;
+            color: white;
+            background-color: rgb(255, 153, 0);
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-right: 20px;
+
+            div.users-head {
+                @include flexing(row, center, space-between);
+                margin-bottom: 15px;
+                h4 {
+                    background-color: black;
+                    padding: 0 8px;
+                    border-radius: 50px;
+                }
+            }
+            div.users-list p {
+                font-weight: 900;
+                font-size: 1.3rem;
+                letter-spacing: 0.5px;
+                margin-bottom: 15px;
+            }
+        }
+        div.chat-window {
+            width: 100%;
+            border-radius: 10px;
+            background-color: rgb(255, 153, 0);
+            div.chats {
+                height: 65vh;
+                padding: 20px;
+                overflow-y: auto;
+            
+                div.user-join {
+                    font-size: 0.9rem;
+                    color: black;
+                    background-color: white;
+                    border-radius: 50px;
+                    width: max-content;
+                    padding: 7px 20px;
+                    margin: 0 auto;
+                    margin-bottom: 15px;
+                }
+
+                div.message {
+                    background-color: white;
+                    padding: 5px 15px;
+                    max-width: 400px;
+                    margin-bottom: 15px;
+                    border-radius: 10px;
+                    p {
+                        font-size: 16px;
+                        padding: 5px 0px 5px 0px;
+                    }
+                }
+
+                div.outgoing {
+                    margin-left: auto;
+                    text-align: right;
+                }
+            }
+
+            div.user-input {
+                @include flexing(row,stretch ,space-between);
+                padding: 20px;
+                input {
+                    font-size: 16px;
+                    background-color: white;
+                    padding: 10px 20px;
+                    outline: none;
+                    border: none;
+                    width: 100%;
+                    border-radius: 10px;
+
+                }
+
+                button {
+                    font-size: 16px;
+                    font-weight: 500;
+                    padding: 5px  15px ;
+                    border: 2px solid white;
+                    outline: none;
+                    letter-spacing: 0.5px;
+                    color: white;
+                    background-color: rgb(255, 153, 0);
+                    border-radius: 10px;
+                    margin-left: 3px;
+                    cursor: pointer;
+
+                }
+                button:hover {
+                    background-color: white;
+                    color: rgb(255, 153, 0) ;
+                }
+            }
+        }
+
+        
+    }
+}
+
+@media screen and (max-width : 900px){
+    main {
+        width: 95%;
+        header{
+            button {
+                display: block;
+            }
+        }
+        div.container {
+            position: relative;
+            div.users-window {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                border-radius: 0 0 10px 10px;
+                height: max-content;
+                z-index: 11;
+                box-shadow: 0 15px 20px -20px;
+                padding-bottom: 0;
+                display: none;
+            }
+
+            div.chat-window {
+                div.chats {
+                    div.message {
+                        min-width: 100px;
+                    }
+                }
+            }
+        }
+    }
+    
+}
